@@ -26,5 +26,7 @@ public class Bracket {
 	public static void main(String[] args) {
 		String str = "(1+2)*(3+4)";
 		System.out.println(Bracket.isMached(str));
+		
 	}
+	
 }
