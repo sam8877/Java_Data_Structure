@@ -23,5 +23,14 @@ public class TestDoublyList {
 		list1.set(0,23);
 		System.out.println(list1);
 		
+		System.out.println("\n---------------------------------------------------");
+		Integer[] values_a = {1,2,3,4,5,6,7,8,9,0};
+		Integer[] values_b = {1,7,8,9,0};
+		DoublyList<Integer> list_a = new DoublyList<>(values_a);
+		DoublyList<Integer> list_b = new DoublyList<>(values_b);
+		System.out.println(list_a);
+		System.out.println(list_b);
+		System.out.println(list_a.intersection(list_b));
+		
 	}
 }

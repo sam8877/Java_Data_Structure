@@ -3,11 +3,9 @@ package u2.doubly;
 public class DoublyList<T> {
 	public DoubleNode<T> head;
 	
-	//默认构造方法，空链表
 	public DoublyList(){
 		this.head = new DoubleNode<T>();
 	}
-	//从数组构造双链表
 	public DoublyList(T[] values){
 		this();
 		DoubleNode<T> rear = this.head;
@@ -17,7 +15,6 @@ public class DoublyList<T> {
 			rear = rear.next;
 		}
 	}
-	//深拷贝构造方法
 	public DoublyList(DoublyList<T> list) {
 		this();
 		DoubleNode<T> rear = this.head;
@@ -41,10 +38,8 @@ public class DoublyList<T> {
 	}
 	
 	public T get(int i) {
-		//指向第一个节点（不是头节点）
 		DoubleNode<T> rear = this.head.next;
 		
-		//将rear指向要找的节点或最后一和节点
 		for(int t=0; t<i&&rear!=null; t++){
 			rear = rear.next;
 		}
@@ -53,7 +48,7 @@ public class DoublyList<T> {
 	
 	public void set(int i, T x) {
 		if (i<0||i>this.size())
-			throw new IndexOutOfBoundsException("数组下标越界。。");
+			throw new IndexOutOfBoundsException("鏁扮粍涓嬫爣瓒婄晫銆傘��");
 		DoubleNode<T> p = this.head.next;
 		for(int j=0; j<i && p!=null; j++)
 			p = p.next;
@@ -93,4 +88,21 @@ public class DoublyList<T> {
 		
 	}
 	
+	public DoublyList<T> intersection(DoublyList<T> list){
+		DoubleNode<T> p=null,q=null;
+		DoublyList<T> result = new DoublyList<T>();
+		DoubleNode<T> rear = result.head;
+		
+		for(p = this.head.next;p!=null;p=p.next) {
+			for(q = list.head.next;q!=null;q=q.next) {
+				System.out.println("p:" + p.data + ", q:" + q.data);
+				if(p.data.equals(q.data)) {
+					rear.next = new DoubleNode<T>(p.data,rear,null);
+					rear = rear.next;
+					break;
+				}
+			}
+		}
+		return result;
+	}
 }
