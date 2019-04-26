@@ -104,10 +104,10 @@ public class SinglyList<T> {
 		//x 涓簄ull鏃舵姏鍑虹┖鎸囬拡寮傚父
 		if (x==null)
 			throw new NullPointerException();
-		Node<T> p = this.head.next;
+		Node<T> p = this.head;
 		//閬嶅巻閾捐〃锛屽鏋滄湁鍏冪礌鍜寈鐩哥瓑锛屽垯杩斿洖null,濡傛灉娌℃湁锛宲鍒欐寚鍚戞渶鍚庝竴涓妭鐐�
 		while(p.next!=null) {
-			if(p.data.equals(x))
+			if(x.equals(p.next.data))
 				return null;
 			p=p.next;
 		}
