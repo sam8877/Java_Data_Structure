@@ -4,7 +4,6 @@ public class TriElement {
 	int data;
 	int parent,left,right;
 	public TriElement(int data, int parent, int left, int right) {
-		super();
 		this.data = data;
 		this.parent = parent;
 		this.left = left;

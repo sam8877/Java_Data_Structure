@@ -1,4 +1,4 @@
-package u9;
+package u9.sort;
 
 public class SelectSort {
 	public static int[] sortUp(int[] list) {

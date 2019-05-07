@@ -14,6 +14,30 @@ public class BinaryTree<T> {
 		BinaryNode<T> p = null;
 		return p;
 	}
+	public BinaryTree(BinaryTree<T> tree){
+		//construct from p's root
+		this.root = this.copy(tree.root);
+	}
+	
+	public BinaryNode<T> copy(BinaryNode<T> p){
+		BinaryNode<T> q = new BinaryNode<T>(p.data);
+		if(p.left!=null)
+			q.left=this.copy(p.left);
+		if(p.right!=null)
+			q.right=this.copy(p.right);
+		return q;
+		
+	}
+	public BinaryNode<T> copy2(BinaryNode<T> p){
+		BinaryNode<T> q = null;
+		if(p!=null) {
+			q = new BinaryNode<T>(p.data);
+			q.left=this.copy(p.left);
+			q.right=this.copy(p.right);
+		}
+		return q;
+		
+	}
 	
 	public boolean isEmpty() {
 		return this.root==null;

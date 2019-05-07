@@ -1,4 +1,4 @@
-package u9;
+package u9.sort;
 
 /*
  * 归并排序

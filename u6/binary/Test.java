@@ -8,8 +8,8 @@ public class Test {
 		tree.insert("A");
 		tree.insert(tree.root,"B",true);
 		tree.insert(tree.root,"C",false);
-		tree.insert(tree.root.left,"D",true);
-		tree.insert(tree.root.left,"E",false);
+		//tree.insert(tree.root.left,"D",true);
+		//tree.insert(tree.root.left,"E",false);
 		tree.preorder();
 		
 		System.out.println("\nhight: "+tree.height(tree.root));
