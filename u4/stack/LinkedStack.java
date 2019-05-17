@@ -2,9 +2,9 @@ package u4.stack;
 
 import u2.singaly.SinglyList;
 
-public final class LinkedStack<T> implements Stack<T>{
+public final class LinkedStack<T> implements Stack<T> {
 	private SinglyList<T> list;
-	
+
 	public LinkedStack() {
 		this.list = new SinglyList<T>();
 	}
@@ -15,7 +15,7 @@ public final class LinkedStack<T> implements Stack<T>{
 	}
 
 	@Override
-	public void push(T x){
+	public void push(T x) {
 		try {
 			this.list.insert(0, x);
 		} catch (Exception e) {
@@ -32,5 +32,10 @@ public final class LinkedStack<T> implements Stack<T>{
 	public T pop() {
 		return this.list.remove(0);
 	}
-	
+
+	@Override
+	public String toString() {
+		return this.list.toString();
+	}
+
 }
