@@ -1,5 +1,9 @@
 package u6.binary;
 
+import u4.stack.LinkedStack;
+import u4.stack.SeqStack;
+import u4.stack.Stack;
+
 public class BinaryTree<T> {
 
 	public BinaryNode<T> root;
@@ -141,6 +145,91 @@ public class BinaryTree<T> {
 		int left_h = this.height(p.left);
 		int right_h = this.height(p.right);
 		return 1 + (left_h > right_h ? left_h : right_h);
+	}
+
+	public int height2(BinaryNode<T> p) {
+		return 0;
+	}
+
+	public String[] getLeafPaths(BinaryNode<T> p) throws Exception {
+		if (p == null)
+			return null;
+		String[] res1 = getLeafPaths(p.left);
+		String[] res2 = getLeafPaths(p.right);
+		if (res1 == null && res2 == null) { // 叶子节点直接返回p.data
+			return new String[] { p.toString() };
+		}
+		if (res1 != null && res2 != null) {
+			for (int i = 0; i < res1.length; i++) {
+				res1[i] = (p.toString() + "->" + res1[i]);
+			}
+			for (int i = 0; i < res2.length; i++) {
+				res2[i] = (p.toString() + "->" + res2[i]);
+			}
+			String[] res = new String[res1.length + res2.length];
+
+			int j = 0; // 将res1和res2复制到res中
+			while (j < res1.length) {
+				res[j] = res1[j];
+				j++;
+			}
+			while (j < res.length) {
+				res[j] = res2[j - res1.length];
+				j++;
+			}
+			return res;
+		}
+		if (res1 == null && res2 != null) {
+			for (int i = 0; i < res2.length; i++)
+				res2[i] = (p.toString() + "->" + res2[i]);
+			return res2;
+		}
+		if (res1 != null && res2 == null) {
+			for (int i = 0; i < res1.length; i++)
+				res1[i] = (p.toString() + "->" + res1[i]);
+			return res1;
+		}
+		return null;
+	}
+
+	public void printLeafPath() throws Exception {
+		String[] paths = getLeafPaths(root);
+		for (int i = 0; i < paths.length; i++) {
+			System.out.println(paths[i]);
+		}
+	}
+
+	public void printLeafPaths() {
+		BinaryNode<T> p = this.root;
+		Stack<BinaryNode<T>> path = new LinkedStack<>();
+		Stack<Integer> stat = new SeqStack<>();
+		while (p != null) {
+			path.push(p);
+			stat.push(0);
+			if (p.isLeaf())
+				System.out.println(path);
+			if (p.left != null) {
+				p = p.left;
+			} else {
+				if (p.right == null) {
+					stat.pop();
+					stat.push(1);
+					while ((Integer.valueOf(1)).equals(stat.peek())) {
+						path.pop();
+						stat.pop();
+					}
+					p = path.peek();
+					p = (p == null) ? null : p.right;
+					stat.pop();
+					stat.push(1);
+				} else {
+					stat.pop();
+					stat.push(1);
+					p = p.right;
+				}
+
+			}
+		}
 	}
 
 }

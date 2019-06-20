@@ -1,4 +1,4 @@
-package u6.tree;
+package u10;
 
 public class TreeNode<T> {
 	public T data;
@@ -20,10 +20,20 @@ public class TreeNode<T> {
 		this(null, null, null, null);
 	}
 
-	public String toString() {
-		return this.data==null?"":this.data.toString();
+	public TreeNode(TreeNode<T> node) {
+		this();
+		if(node!=null){
+			this.data = node.data;
+			this.parent = node.parent;
+			this.child = node.child;
+			this.sibling = node.sibling;
+		}
 	}
 
+	public String toString() {
+		return this.data==null?"null":this.data.toString();
+	}
+	
 	public boolean isLeaf() {
 		return (this.child == null);
 	}

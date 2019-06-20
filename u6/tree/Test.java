@@ -1,16 +1,23 @@
 package u6.tree;
 
 public class Test {
-	public static void main(String[] args) {
-		Tree<String> tree = new Tree<String>();
-		TreeNode<String> node1 = new TreeNode<String>("a", 0);
-		TreeNode<String> node2 = new TreeNode<String>("b", 0);
-		TreeNode<String> node3 = new TreeNode<String>("c", 0);
-		TreeNode<String> node4 = new TreeNode<String>("d", 0);
-		tree.root.child = node1;
-		tree.root.child.sibling = node2;
-		tree.root.child.child = node3;
-		tree.root.child.child.sibling = node4;
+	public static void main(String[] args) throws Exception {
+		Tree<String> tree = new Tree<String>("root");
+		TreeNode<String> a = new TreeNode<String>("a");
+		TreeNode<String> b = new TreeNode<String>("b");
+		TreeNode<String> c = new TreeNode<String>("c");
+		TreeNode<String> d = new TreeNode<String>("d");
+		tree.root.child = a;
+		a.sibling = b;
+		a.child = c;
+		tree.root.sibling = d;
+		b.parent=tree.root;
+		a.parent=tree.root;
+		c.parent = a;
+		d.parent = null;
 		tree.printGenList();
+		//System.out.println(tree.toStringWithParent(tree.root));
+		
+		
 	}
 }

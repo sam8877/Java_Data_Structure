@@ -32,5 +32,10 @@ public final class SeqStack<T> implements Stack<T> {
 	public T pop() {
 		return this.list.remove(list.size() - 1);
 	}
+	
+	@Override
+	public String toString() {
+		return this.list.toString();
+	}
 
 }

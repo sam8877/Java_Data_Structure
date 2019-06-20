@@ -21,10 +21,14 @@ public class Test {
 		GenList<Integer> genList = new GenList<Integer>(integers_1);
 		GenList<Integer> genList2 = new GenList<Integer>(integers_2);
 		GenList<Integer> genList3 = new GenList<Integer>(integers_3);
+		//GenList<Integer> genList4 = new GenList<Integer>(genList);
 		System.out.println("\n-------原子构造-----------");
 		System.out.println("genlist---" + genList);
 		System.out.println("genlist2--" + genList2);
 		System.out.println("genlist3--" + genList3);
+		
+		System.out.println("----拷贝构造（递归实现）---------");
+		//System.out.println("genlist4--" + genList4);
 
 		System.out.println("\n-----插入原子-----------");
 		genList.insert(100);
@@ -57,11 +61,11 @@ public class Test {
 		genList.insert(genList3);
 		System.out.println("genList: " + genList);
 		System.out.println("genList " + "size: " + genList.size() + "\tdepth:" + genList.depth());
-
+		
 	}
 
 	public static void main(String[] args) {
-		testMatrix();
+		//testMatrix();
 		testGenList();
 	}
 }
